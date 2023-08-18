@@ -1,6 +1,8 @@
+pkgs/ruby-gems/vendor
+pkgs/ruby-gems/.bundle
+pkgs/python-packages/requirements_frozen.txt
+
+private.nix
+private.nix
+
 result
-result-*
-*.qcow2
-.direnv/
-# Looks like a temporary file, but not sure
-doom-emacs/flycheck_config.el
