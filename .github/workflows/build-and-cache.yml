@@ -1,0 +1,61 @@
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: easimon/maximize-build-space@v7
+        with:
+          overprovision-lvm: true
+          remove-android: true
+          remove-codeql: true
+          remove-docker-images: true
+          remove-dotnet: true
+          remove-haskell: true
+          root-reserve-mb: 512
+          swap-size-mb: 1024
+      - uses: actions/checkout@v3
+      - uses: cachix/install-nix-action@v20
+        with:
+          extra_nix_config: access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+          nix_path: nixpkgs=channel:nixos-unstable
+      - uses: cachix/cachix-action@v12
+        with:
+          authToken: ${{ secrets.CACHIX_TOKEN }}
+          extraPullNames: nix-community
+          name: thiagokokada-nix-configs
+      - name: Set default git branch (to reduce log spam)
+        run: git config --global init.defaultBranch master
+      - name: Check if all `.nix` files are formatted correctly
+        run: nix run '.#formatCheck'
+      - name: Validate Flakes
+        run: nix flake check
+      - name: 'Build Home-Manager configs for: home-linux, steamdeck'
+        run: |-
+          nix build --print-build-logs '.#homeConfigurations.home-linux.activationPackage'
+          nix build --print-build-logs '.#homeConfigurations.steamdeck.activationPackage'
+      - name: 'Build NixOS configs for: hachune-nixos, miku-nixos, mirai-vps, sankyuu-nixos'
+        run: |-
+          nix build --print-build-logs '.#nixosConfigurations.hachune-nixos.config.system.build.toplevel'
+          nix build --print-build-logs '.#nixosConfigurations.miku-nixos.config.system.build.toplevel'
+          nix build --print-build-logs '.#nixosConfigurations.mirai-vps.config.system.build.toplevel'
+          nix build --print-build-logs '.#nixosConfigurations.sankyuu-nixos.config.system.build.toplevel'
+  build-macos:
+    runs-on: macos-13
+    steps:
+      - uses: actions/checkout@v3
+      - uses: cachix/install-nix-action@v20
+        with:
+          extra_nix_config: access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+          nix_path: nixpkgs=channel:nixos-unstable
+      - uses: cachix/cachix-action@v12
+        with:
+          authToken: ${{ secrets.CACHIX_TOKEN }}
+          extraPullNames: nix-community
+          name: thiagokokada-nix-configs
+      - name: Set default git branch (to reduce log spam)
+        run: git config --global init.defaultBranch master
+      - name: 'Build Home-Manager configs for: home-macos'
+        run: nix build --print-build-logs '.#homeConfigurations.home-macos.activationPackage'
+name: build-and-cache
+"on":
+  - push
+  - workflow_dispatch
