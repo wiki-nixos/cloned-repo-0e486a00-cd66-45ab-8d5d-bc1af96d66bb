@@ -11,18 +11,12 @@ in
   imports = [
     ./hardware-configuration.nix
     ../../nixos
-    inputs.hardware.nixosModules.common-cpu-amd
-    inputs.hardware.nixosModules.common-gpu-amd
+    inputs.hardware.nixosModules.common-cpu-intel
   ];
 
   device = {
-    type = "desktop";
-    netDevices = [ "enp2s0f1" ];
-  };
-
-  nixos.server = {
-    tailscale.enable = true;
-    ssh.enable = true;
+    type = "laptop";
+    netDevices = [ "enp3s0" "wlan0" ];
   };
 
   # Use the systemd-boot EFI boot loader
@@ -31,20 +25,5 @@ in
 
   networking.hostName = "hachune-nixos";
 
-  # Use ultrawide wallpaper
-  home-manager.users.${config.meta.username}.theme.wallpaper.path = pkgs.wallpapers.hatsune-miku_stylized-ultrawide;
-
-  # Reduce power consumption
-  services.tlp = {
-    enable = true;
-    settings = {
-      CPU_SCALING_GOVERNOR_ON_AC = "schedutil";
-      CPU_SCALING_GOVERNOR_ON_BAT = "schedutil";
-    };
-  };
-
-  # Used for firmware updates
-  services.fwupd.enable = true;
-
-  time.timeZone = "Europe/Dublin";
+  time.timeZone = "Europe/Berlin";
 }
