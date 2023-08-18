@@ -1,3 +1,13 @@
+copied from: 
+https://github.com/thiagokokada/nix-configs
+
+
+future inspirations:
+https://github.com/malob/nixpkgs
+https://github.com/rayandrew/nix-config
+https://github.com/azuwis/nix-config
+
+
 # nix-configs
 
 [![build-and-cache](https://github.com/thiagokokada/nix-configs/actions/workflows/build-and-cache.yml/badge.svg)](https://github.com/thiagokokada/nix-configs/actions/workflows/build-and-cache.yml)

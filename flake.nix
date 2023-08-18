@@ -127,26 +127,12 @@
 
       # NixOS configs
       (mkNixOSConfig { hostname = "hachune-nixos"; })
-      (mkNixOSConfig { hostname = "miku-nixos"; })
-      (mkNixOSConfig { hostname = "mirai-vps"; })
-      (mkNixOSConfig { hostname = "sankyuu-nixos"; })
 
       # Home-Manager configs
       (mkHomeConfig { hostname = "home-linux"; })
       (mkHomeConfig {
         hostname = "home-linux-minimal";
         configuration = ./home-manager/minimal.nix;
-      })
-      (mkHomeConfig {
-        hostname = "steamdeck";
-        username = "deck";
-        configuration = ./home-manager/steamdeck.nix;
-      })
-      (mkHomeConfig {
-        hostname = "home-macos";
-        configuration = ./home-manager/macos.nix;
-        system = "x86_64-darwin";
-        homePath = "/Users";
       })
 
       # Commands
@@ -177,7 +163,6 @@
       (mkGHActionsYAMLs [
         "build-and-cache"
         "update-flakes"
-        "update-flakes-darwin"
       ])
     ]); # END recursiveMergeAttrs
 }
