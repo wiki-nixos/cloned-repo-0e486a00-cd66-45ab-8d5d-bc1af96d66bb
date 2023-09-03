@@ -10,6 +10,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./xfce.nix
       ../home-manager/apps/firefox.nix
     ];
 
@@ -44,13 +45,6 @@
     LC_TELEPHONE = "de_DE.UTF-8";
     LC_TIME = "de_DE.UTF-8";
   };
-
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # enable gnome display manager
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
 
   # disable default gnome apps:
   environment.gnome.excludePackages = (with pkgs; [
@@ -101,9 +95,6 @@
     #media-session.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.user = {
     isNormalUser = true;
@@ -120,9 +111,7 @@
 
   environment.systemPackages = with pkgs; [
     virt-manager
-    #(pkgs.callPackage ../home-manager/apps/intellij-idea.nix {})
     # config.nur.repos.mic92.hello-nur
-    # pkgs.util-linux
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
