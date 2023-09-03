@@ -1,5 +1,8 @@
 { config, pkgs, nur, ... }:
 
+let
+  ideaUltimateModified = import ./apps/jetbrains-idea-ultimate-override-neo2.nix { inherit pkgs; };
+in 
 {
 
   imports = [
@@ -37,6 +40,9 @@
     pkgs.protonmail-bridge
     pkgs.thunderbird
 
+
+    #pkgs.jetbrains.idea-ultimate
+    ideaUltimateModified
     nur.repos.mic92.hello-nur  
 
     # dev
