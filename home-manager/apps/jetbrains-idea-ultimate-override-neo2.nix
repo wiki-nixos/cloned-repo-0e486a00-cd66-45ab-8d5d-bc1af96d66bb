@@ -10,7 +10,6 @@ in
 
 pkgs.jetbrains.idea-ultimate.overrideAttrs (oldAttrs: {
   postInstall = oldAttrs.postInstall or "" + ''
-    echo "Hello World!" > $out/idea-ultimate/hello-world.txt
     cp ${neo2AwtHackJar} $out/idea-ultimate/neo2-awt-hack-0.5.jar
 
     # 1. Extrahieren Sie die letzten zwei Zeilen in eine temporäre Datei.
