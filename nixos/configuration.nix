@@ -111,6 +111,12 @@
 
   environment.systemPackages = with pkgs; [
     virt-manager
+    pkgs.killall
+    pkgs.xbindkeys
+    pkgs.xdotool
+    pkgs.xorg.xmodmap
+    pkgs.xorg.xev
+
     # config.nur.repos.mic92.hello-nur
   ];
 
