@@ -49,3 +49,14 @@ In no particular order:
     * using a self-made WIP Solarized based [colorscheme](./configs/nvim/lua/malo/theme.lua) with Neovim; and
     * a [Fish shell config](./home/fish.nix), which provides a `toggle-background` function (and an alias `tb`) which toggles a universal environment variable (`$term_background`) between the values `"light"` and `"dark"`, along with `set-shell-colors` function which trigger automatically when `$term_background` changes.
 * A nice [shell prompt config](./home/starship.nix) for Fish using Starship.
+
+
+
+
+
+# i3wm example configs:
+
+https://github.com/srid/nix-config/blob/705a70c094da53aa50cf560179b973529617eb31/nix/home/i3.nix
+
+https://nixos.wiki/wiki/i3
+https://nix-community.github.io/home-manager/options.html#opt-programs.i3status-rust.enable

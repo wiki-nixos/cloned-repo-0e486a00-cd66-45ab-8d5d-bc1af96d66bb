@@ -6,11 +6,45 @@ let
 
 in 
 {
+programs.i3status-rust = {
+    enable = true;
+    bars = {
+      top = {
+        blocks = [
+         {
+           block = "time";
+           #format = "%a %d/%m %k:%M %p";
+           interval = 1;
+           format = " $timestamp.datetime(f:'%Y.%m.%d %H:%M:%S') ";
+         }
+         {
+           block = "cpu";
+         }
+       ];
+      };
+    };
+  };
+
 
     # todo move to own file
     xsession.windowManager.i3 = {
         enable = true;
         config = {
+
+
+ bars = [
+        {
+
+          fonts = ["DejaVu Sans Mono, FontAwesome 15"];
+          position = "top";
+          statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-top.toml";
+        }
+      ];
+
+
+
+
+
             modifier = mod;
          keybindings = {
             # Focus
@@ -72,20 +106,16 @@ in
 
  "${mod}+u" = "exec --no-startup-id dmenu_run";
  
-# TODO 
 "${mod}+s" = "split h";
   "${mod}+y" = "split v";
   "${mod}+m" = "fullscreen";
-
 
   "${mod}+Shift+s" = "layout splith";
   "${mod}+Shift+y" = "layout splitv";
   "${mod}+Shift+b" = "layout stacking";
   "${mod}+Shift+comma" = "layout tabbed";
   "${mod}+space" = "floating toggle";
-  "${mod}+Shift+space" = "focus mode_toggle";
-
-
+  # TODO what is this?? "${mod}+Shift+space" = "focus mode_toggle";
 
         };
         };
