@@ -118,6 +118,10 @@
     pkgs.xorg.xev
     pkgs.libsForQt5.konsole
 
+    pkgs.google-chrome
+
+    pkgs.spice
+
     # config.nur.repos.mic92.hello-nur
   ];
 

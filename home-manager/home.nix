@@ -147,12 +147,12 @@ programs.i3status-rust = {
     # pkgs.hello
     pkgs.htop
     pkgs.vim
-    pkgs.signal-desktop
     pkgs.wget
     pkgs.tree
     pkgs.git
     pkgs.rpi-imager
 
+    pkgs.element-desktop
     pkgs.protonmail-bridge
     pkgs.thunderbird
 
