@@ -1,2 +1,2 @@
 .idea
-/nixos/hardware-configuration-x13.nix
+/nixos/hardware-configuration.nix
