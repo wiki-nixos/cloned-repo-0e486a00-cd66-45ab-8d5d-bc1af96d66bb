@@ -163,7 +163,7 @@ programs.i3status-rust = {
 
     pkgs.joplin-desktop
     pkgs.signal-desktop
-    # joplinWithDesktop
+    pkgs.slack
 
     # dev
     # # It is sometimes useful to fine-tune packages, for example, by applying
