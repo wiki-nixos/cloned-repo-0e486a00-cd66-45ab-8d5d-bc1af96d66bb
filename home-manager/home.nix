@@ -105,7 +105,7 @@ programs.i3status-rust = {
   "${mod}+Shift+e" = "exec \"i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'\"";
 
  "${mod}+u" = "exec --no-startup-id dmenu_run";
- 
+
 "${mod}+s" = "split h";
   "${mod}+y" = "split v";
   "${mod}+m" = "fullscreen";
@@ -161,10 +161,11 @@ programs.i3status-rust = {
     ideaUltimateModified
     nur.repos.mic92.hello-nur  
 
+    pkgs.joplin-desktop
+    pkgs.signal-desktop
+    # joplinWithDesktop
+
     # dev
-    pkgs.gcc
-    #pkgs.cargo
-    pkgs.rustup
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -206,7 +207,6 @@ programs.i3status-rust = {
   # if you don't want to manage your shell through Home Manager.
   home.sessionVariables = {
     # EDITOR = "emacs";
-    TERMINAL = "konsole";
   };
 
 

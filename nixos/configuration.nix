@@ -53,7 +53,7 @@
   ]) ++ (with pkgs.gnome; [
    cheese # webcam tool
     gnome-music
-    gnome-terminal
+    # gnome-terminal
     gedit # text editor
     epiphany # web browser
     geary # email reader
@@ -116,6 +116,7 @@
     pkgs.xdotool
     pkgs.xorg.xmodmap
     pkgs.xorg.xev
+    pkgs.libsForQt5.konsole
 
     # config.nur.repos.mic92.hello-nur
   ];
