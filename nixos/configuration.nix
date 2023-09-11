@@ -34,6 +34,9 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
+  services.fwupd.enable = true;
+
+
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "de_DE.UTF-8";
     LC_IDENTIFICATION = "de_DE.UTF-8";
@@ -94,6 +97,9 @@
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
+
+  services.blueman.enable = true;
+   hardware.bluetooth.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.user = {

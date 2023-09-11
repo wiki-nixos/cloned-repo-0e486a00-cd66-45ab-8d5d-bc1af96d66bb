@@ -49,8 +49,8 @@ programs.i3status-rust = {
          keybindings = {
             # Focus
         "${mod}+n" = "focus left";
-        "${mod}+g" = "focus down";
-        "${mod}+r" = "focus up";
+        "${mod}+g" = "focus up";
+        "${mod}+r" = "focus down";
         "${mod}+t" = "focus right";
 
         "${mod}+Left" = "focus left";
@@ -60,9 +60,10 @@ programs.i3status-rust = {
 
             # Move
           "${mod}+Shift+n" = "move left";
-          "${mod}+Shift+g" = "move down";
-          "${mod}+Shift+r" = "move up";
+          "${mod}+Shift+g" = "move up";
+          "${mod}+Shift+r" = "move down";
           "${mod}+Shift+t" = "move right";
+
           "${mod}+Shift+Left" = "move left";
   "${mod}+Shift+Down" = "move down";
   "${mod}+Shift+Up" = "move up";
