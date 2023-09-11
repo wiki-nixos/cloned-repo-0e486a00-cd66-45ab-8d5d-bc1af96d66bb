@@ -11,15 +11,35 @@ programs.i3status-rust = {
     bars = {
       top = {
         blocks = [
-         {
-           block = "time";
-           #format = "%a %d/%m %k:%M %p";
-           interval = 1;
-           format = " $timestamp.datetime(f:'%Y.%m.%d %H:%M:%S') ";
+          {
+                       block = "sound";
+          }
+        {
+                    block = "speedtest";
+                    interval = 600;
+
+                     # format = "$ping.eng(w:4)";
+                     format = " ^icon_ping $ping ^icon_net_down $speed_down ^icon_net_up $speed_up ";
+
          }
+
+         {
+                                       block = "battery";
+                                    }
+                  {
+                             block = "temperature";
+                  }
+          {
+                      block = "amd_gpu";
+           }
          {
            block = "cpu";
          }
+         {
+                    block = "time";
+                    interval = 1;
+                    format = " $timestamp.datetime(f:'%Y.%m.%d %H:%M:%S') ";
+                  }
        ];
       };
     };
@@ -166,6 +186,8 @@ programs.i3status-rust = {
     pkgs.signal-desktop
     pkgs.slack
 
+
+    pkgs.speedtest-cli
     # dev
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
