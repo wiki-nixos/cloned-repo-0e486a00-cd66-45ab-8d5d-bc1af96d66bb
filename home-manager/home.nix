@@ -23,6 +23,9 @@ programs.i3status-rust = {
 
          }
 
+{
+block = "disk_space";
+}
          {
                                        block = "battery";
                                     }
@@ -178,6 +181,8 @@ programs.i3status-rust = {
     pkgs.thunderbird
 
 
+# open source (https://github.com/th-ch/youtube-music)
+    pkgs.youtube-music
     #pkgs.jetbrains.idea-ultimate
     ideaUltimateModified
     nur.repos.mic92.hello-nur  
