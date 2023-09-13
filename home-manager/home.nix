@@ -180,6 +180,7 @@ block = "disk_space";
     pkgs.protonmail-bridge
     pkgs.thunderbird
 
+pkgs.mullvad-browser
 
 # open source (https://github.com/th-ch/youtube-music)
     pkgs.youtube-music
