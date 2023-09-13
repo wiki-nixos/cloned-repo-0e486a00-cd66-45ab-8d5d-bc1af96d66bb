@@ -2,6 +2,7 @@
 
 let
   ideaUltimateModified = import ./apps/jetbrains-idea-ultimate-override-neo2.nix { inherit pkgs; };
+  clionModified = import ./apps/jetbrains-clion-override-neo2.nix { inherit pkgs; };
   mod = "Mod4";
 
 in 
@@ -186,6 +187,7 @@ pkgs.mullvad-browser
     pkgs.youtube-music
     #pkgs.jetbrains.idea-ultimate
     ideaUltimateModified
+    clionModified
     nur.repos.mic92.hello-nur  
 
     pkgs.joplin-desktop

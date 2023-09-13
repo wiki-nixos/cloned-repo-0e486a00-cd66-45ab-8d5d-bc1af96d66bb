@@ -129,6 +129,20 @@
     pkgs.spice # copy-paste for vms
 
 
+    # dev
+    pkgs.rustc
+    pkgs.rustup
+    pkgs.cargo
+    pkgs.gcc
+
+
+    pkgs.python3
+    pkgs.poetry
+
+    pkgs.openssl
+
+
+
 
     # config.nur.repos.mic92.hello-nur
   ];
