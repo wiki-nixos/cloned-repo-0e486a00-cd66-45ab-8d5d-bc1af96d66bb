@@ -76,6 +76,11 @@ block = "disk_space";
 
          "${mod}+Shift+F1" = "exec --no-startup-id \"xset dpms force off\"";
 
+         # start terminal
+         "${mod}+Return" = "exec --no-startup-id \"exo-open --launch TerminalEmulator\"";
+
+
+
 	# Right Hand:
             # Focus
         "${mod}+n" = "focus left";
