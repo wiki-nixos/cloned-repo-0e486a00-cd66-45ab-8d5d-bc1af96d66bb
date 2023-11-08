@@ -55,6 +55,7 @@ block = "disk_space";
         enable = true;
 
         extraConfig = ''
+        font pango:monospace 14
         workspace_layout tabbed
         '';
         config = {
@@ -73,6 +74,7 @@ block = "disk_space";
             modifier = mod;
          keybindings = {
 
+         "${mod}+Shift+F1" = "exec --no-startup-id \"xset dpms force off\"";
 
 	# Right Hand:
             # Focus
