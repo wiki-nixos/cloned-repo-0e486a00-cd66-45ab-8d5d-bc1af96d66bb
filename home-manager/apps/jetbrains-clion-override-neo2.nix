@@ -21,7 +21,7 @@ pkgs.jetbrains.clion.overrideAttrs (oldAttrs: {
 
     # 3. Fügen Sie den gewünschten String zur ursprünglichen Datei hinzu.
     # echo "--patch-module=java.desktop=../neo2-awt-hack-0.5.jar \\" >> $out/clion/bin/.clion.sh-wrapped
-    echo "--patch-module=java.desktop=$out/clion/neo2-awt-hack-0.5.jar \\" >> $out/clion/bin/.idea.sh-wrapped
+    echo "--patch-module=java.desktop=$out/clion/neo2-awt-hack-0.5.jar \\" >> $out/clion/bin/.clion.sh-wrapped
 
     # 4. Fügen Sie die ursprünglichen letzten zwei Zeilen wieder an die ursprüngliche Datei an.
     cat temp_last_lines.txt >> $out/clion/bin/.clion.sh-wrapped
