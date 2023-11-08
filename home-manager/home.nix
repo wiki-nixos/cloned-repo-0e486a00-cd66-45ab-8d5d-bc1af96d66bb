@@ -57,6 +57,7 @@ block = "disk_space";
         extraConfig = ''
         font pango:monospace 14
         workspace_layout tabbed
+        client.focused #4c7899 #2a3843 #ffffff #2e9ef4 #285577
         '';
         config = {
 
