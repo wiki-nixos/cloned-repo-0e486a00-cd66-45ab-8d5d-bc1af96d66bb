@@ -53,6 +53,10 @@ block = "disk_space";
     # todo move to own file
     xsession.windowManager.i3 = {
         enable = true;
+
+        extraConfig = ''
+        workspace_layout tabbed
+        '';
         config = {
 
 
@@ -66,21 +70,18 @@ block = "disk_space";
       ];
 
 
-
-
-
             modifier = mod;
          keybindings = {
+
+
+	# Right Hand:
             # Focus
         "${mod}+n" = "focus left";
         "${mod}+g" = "focus up";
         "${mod}+r" = "focus down";
         "${mod}+t" = "focus right";
 
-        "${mod}+Left" = "focus left";
-      "${mod}+Down" = "focus down";
-      "${mod}+Up" = "focus up";
-      "${mod}+Right" = "focus right";
+
 
             # Move
           "${mod}+Shift+n" = "move left";
@@ -88,6 +89,30 @@ block = "disk_space";
           "${mod}+Shift+r" = "move down";
           "${mod}+Shift+t" = "move right";
 
+
+	# Left Hand:
+            # Focus
+        "${mod}+u" = "focus left";
+        "${mod}+v" = "focus up";
+        "${mod}+i" = "focus down";
+        "${mod}+a" = "focus right";
+
+            # Move
+          "${mod}+Shift+u" = "move left";
+          "${mod}+Shift+v" = "move up";
+          "${mod}+Shift+i" = "move down";
+          "${mod}+Shift+a" = "move right";
+
+
+
+	# legacy
+      # focus
+	        "${mod}+Left" = "focus left";
+      "${mod}+Down" = "focus down";
+      "${mod}+Up" = "focus up";
+      "${mod}+Right" = "focus right";
+
+      # move
           "${mod}+Shift+Left" = "move left";
   "${mod}+Shift+Down" = "move down";
   "${mod}+Shift+Up" = "move up";
@@ -118,9 +143,14 @@ block = "disk_space";
   "${mod}+Shift+9" = "move container to workspace 9";
   "${mod}+Shift+0" = "move container to workspace 10";
 
+
 # Arbeitsbereich nach rechts/links wechseln
+# right hand
 "${mod}+f" = "workspace next";
 "${mod}+h" = "workspace prev";
+# left hand
+"${mod}+l" = "workspace next";
+"${mod}+x" = "workspace prev";
 
    "${mod}+shift+q" = "kill";
 
@@ -129,16 +159,19 @@ block = "disk_space";
  "${mod}+Shift+c" = "restart";
   "${mod}+Shift+e" = "exec \"i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'\"";
 
- "${mod}+u" = "exec --no-startup-id dmenu_run";
+ # "${mod}+u" = "exec --no-startup-id dmenu_run";
 
 "${mod}+s" = "split h";
-  "${mod}+y" = "split v";
-  "${mod}+m" = "fullscreen";
+"${mod}+Shift+s" = "layout splith";
 
-  "${mod}+Shift+s" = "layout splith";
+  "${mod}+y" = "split v";
   "${mod}+Shift+y" = "layout splitv";
-  "${mod}+Shift+b" = "layout stacking";
-  "${mod}+Shift+comma" = "layout tabbed";
+
+
+  "${mod}+m" = "fullscreen toggle";
+
+  "${mod}+b" = "layout stacking";
+  "${mod}+comma" = "layout tabbed";
   "${mod}+space" = "floating toggle";
   # TODO what is this?? "${mod}+Shift+space" = "focus mode_toggle";
 
@@ -196,6 +229,9 @@ pkgs.mullvad-browser
 
 
     pkgs.speedtest-cli
+
+
+    pkgs.monero-gui
     # dev
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
