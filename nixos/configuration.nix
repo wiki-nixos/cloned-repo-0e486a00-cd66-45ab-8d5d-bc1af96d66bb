@@ -111,7 +111,7 @@ security.sudo.extraConfig = ''
   users.users.user = {
     isNormalUser = true;
     description = "user";
-    extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" "jackaudio"];
     packages = with pkgs; [
       kate
     ];
@@ -134,6 +134,8 @@ security.sudo.extraConfig = ''
 
     pkgs.spice # copy-paste for vms
 
+    # audio
+    pkgs.pavucontrol
 
     # dev
     pkgs.rustc
