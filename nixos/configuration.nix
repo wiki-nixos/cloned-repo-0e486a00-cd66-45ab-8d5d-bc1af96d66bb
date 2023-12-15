@@ -14,6 +14,7 @@
       ./hardware-configuration-x13.nix
       ./xfce.nix
       ../home-manager/apps/firefox.nix
+      ./containers.nix
     ];
 
   # Bootloader.

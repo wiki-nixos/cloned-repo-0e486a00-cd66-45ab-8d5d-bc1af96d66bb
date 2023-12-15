@@ -235,6 +235,12 @@ pkgs.mullvad-browser
     pkgs.signal-desktop
     pkgs.slack
 
+    pkgs.qbittorrent
+    pkgs.vlc
+
+
+    pkgs.libreoffice
+
 
     pkgs.speedtest-cli
 
