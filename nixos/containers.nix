@@ -2,4 +2,8 @@
 
 {
 
+  # todo:
+  #  protonvpn cli wrapped?
+  #  intellij? as a app?
+  #  ...?
 }
