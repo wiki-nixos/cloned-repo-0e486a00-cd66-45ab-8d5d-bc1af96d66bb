@@ -176,8 +176,13 @@ pkgs.tor-browser-bundle-bin
   services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [
+    24800 # barrier keyboard / mouse sharing
+   ];
+  networking.firewall.allowedUDPPorts = [
+  24800 # barrier keyboard / mouse sharing
+
+  ];
     # Enable NAT
     networking.firewall = {
        # if packets are still dropped, they will show up in dmesg

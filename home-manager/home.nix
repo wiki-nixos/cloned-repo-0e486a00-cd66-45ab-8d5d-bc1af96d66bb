@@ -239,6 +239,8 @@ pkgs.mullvad-browser
     pkgs.vlc
 
 
+
+    pkgs.barrier # keyboard and mouse sharing
     pkgs.libreoffice
 
 
