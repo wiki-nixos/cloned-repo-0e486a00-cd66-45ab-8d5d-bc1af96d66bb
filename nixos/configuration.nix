@@ -151,8 +151,8 @@ security.sudo.extraConfig = ''
     pkgs.openssl
 
 
-
-
+xorg.xhost
+pkgs.tailscale
 
 
 pkgs.tor-browser-bundle-bin
@@ -168,6 +168,13 @@ pkgs.tor-browser-bundle-bin
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+
+
+  # hotfix to enable update
+        nixpkgs.config.permittedInsecurePackages = [
+        "electron-25.9.0"
+    ];
+
 	
 
   # List services that you want to enable:
@@ -215,4 +222,5 @@ pkgs.tor-browser-bundle-bin
   virtualisation.libvirtd.enable = true;
   programs.dconf.enable = true;
 
+services.tailscale.enable = true;
 }
