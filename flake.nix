@@ -7,33 +7,31 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nur.url = "github:nix-community/NUR";
   };
 
-  inputs.nur.url = github:nix-community/NUR;
+  outputs = { nixpkgs, home-manager, nur, ... }: {
+    nixosConfigurations = {
+      nixos = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
 
-  outputs = { nixpkgs, home-manager, nur, ... }:
-    let
-      system = "x86_64-linux";
-    in
-    {
-      nixosConfigurations = {
-        nixos = nixpkgs.lib.nixosSystem {
-          inherit system;
-          modules = [
-            nur.nixosModules.nur
-            ./nixos/configuration.nix
-            home-manager.nixosModules.home-manager
-            ({ config, ... }: {
-              home-manager = {
-                useUserPackages = true;
-                useGlobalPkgs = true;
-                users.user = ./home-manager/home.nix;
-                extraSpecialArgs.nur = config.nur;
-              };
-            })
-          ];
-        };
+        modules = [
+          ./nixos
+
+          home-manager.nixosModules.home-manager
+          nur.nixosModules.nur
+
+          ({ config, ... }: {
+            home-manager = {
+              useUserPackages = true;
+              useGlobalPkgs = true;
+              users.user = ./home-manager;
+              extraSpecialArgs.nur = config.nur;
+            };
+          })
+        ];
       };
     };
+  };
 }
 

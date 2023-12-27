@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 
 with lib;
+
 let
   cfg = config.services.protonmail-bridge;
   #Still need to integrate more closely with the email management capabilities of home-manager
@@ -26,13 +27,11 @@ in
         default = "info";
         description = "The log level";
       };
-
     };
   };
 
   ##### implementation
   config = mkIf cfg.enable {
-
     home.packages = [ pkgs.protonmail-bridge ];
 
     systemd.user.services.protonmail-bridge = {
