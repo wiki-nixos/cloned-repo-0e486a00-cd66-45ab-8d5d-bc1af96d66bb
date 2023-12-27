@@ -12,28 +12,28 @@
   inputs.nur.url = github:nix-community/NUR;
 
   outputs = { nixpkgs, home-manager, nur, ... }:
-  let
-    system = "x86_64-linux";
-  in
-  {
-    nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
-        inherit system;
-        modules = [
-          nur.nixosModules.nur
-          ./nixos/configuration.nix 
-          home-manager.nixosModules.home-manager
-          ({config, ...}: {
-            home-manager = {
-              useUserPackages = true;
-              useGlobalPkgs = true;
-              users.user = ./home-manager/home.nix;
-              extraSpecialArgs.nur = config.nur;
-            };
-          })
-        ];
+    let
+      system = "x86_64-linux";
+    in
+    {
+      nixosConfigurations = {
+        nixos = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
+            nur.nixosModules.nur
+            ./nixos/configuration.nix
+            home-manager.nixosModules.home-manager
+            ({ config, ... }: {
+              home-manager = {
+                useUserPackages = true;
+                useGlobalPkgs = true;
+                users.user = ./home-manager/home.nix;
+                extraSpecialArgs.nur = config.nur;
+              };
+            })
+          ];
+        };
       };
     };
-  };
 }
 

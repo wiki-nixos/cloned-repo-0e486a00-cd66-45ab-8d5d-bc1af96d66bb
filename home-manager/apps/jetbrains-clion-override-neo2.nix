@@ -10,7 +10,7 @@ in
 
 pkgs.jetbrains.clion.overrideAttrs (oldAttrs: {
 
- postInstall = oldAttrs.postInstall or "" + ''
+  postInstall = oldAttrs.postInstall or "" + ''
     cp ${neo2AwtHackJar} $out/clion/neo2-awt-hack-0.5.jar
 
     # 1. Extrahieren Sie die letzten zwei Zeilen in eine temporäre Datei.

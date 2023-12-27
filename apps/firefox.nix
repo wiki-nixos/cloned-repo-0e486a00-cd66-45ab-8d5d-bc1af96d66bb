@@ -10,7 +10,8 @@ let
   };
 
 
-in { 
+in
+{
   programs.firefox = {
     enable = true;
   };

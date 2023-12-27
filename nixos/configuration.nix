@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }: 
+{ config, pkgs, ... }:
 
 
 
@@ -10,7 +10,8 @@
 
   nix.settings.experimental-features = [ "nix-command flakes" ];
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration-x13.nix
       ./xfce.nix
       ../home-manager/apps/firefox.nix
@@ -57,7 +58,7 @@
     gnome-photos
     gnome-tour
   ]) ++ (with pkgs.gnome; [
-   cheese # webcam tool
+    cheese # webcam tool
     gnome-music
     # gnome-terminal
     gedit # text editor
@@ -71,7 +72,7 @@
     hitori # sudoku game
     atomix # puzzle game
   ]);
-  
+
   # Configure keymap in X11
   services.xserver = {
     layout = "de";
@@ -88,9 +89,9 @@
   sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
-security.sudo.extraConfig = ''
-  Defaults        timestamp_timeout=30
-'';
+  security.sudo.extraConfig = ''
+    Defaults        timestamp_timeout=30
+  '';
 
   services.pipewire = {
     enable = true;
@@ -106,13 +107,13 @@ security.sudo.extraConfig = ''
   };
 
   services.blueman.enable = true;
-   hardware.bluetooth.enable = true;
+  hardware.bluetooth.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.user = {
     isNormalUser = true;
     description = "user";
-    extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" "jackaudio"];
+    extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" "jackaudio" ];
     packages = with pkgs; [
       kate
     ];
@@ -151,11 +152,11 @@ security.sudo.extraConfig = ''
     pkgs.openssl
 
 
-xorg.xhost
-pkgs.tailscale
+    xorg.xhost
+    pkgs.tailscale
 
 
-pkgs.tor-browser-bundle-bin
+    pkgs.tor-browser-bundle-bin
 
     # config.nur.repos.mic92.hello-nur
   ];
@@ -171,11 +172,11 @@ pkgs.tor-browser-bundle-bin
 
 
   # hotfix to enable update
-        nixpkgs.config.permittedInsecurePackages = [
-        "electron-25.9.0"
-    ];
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-25.9.0"
+  ];
 
-	
+
 
   # List services that you want to enable:
 
@@ -185,25 +186,25 @@ pkgs.tor-browser-bundle-bin
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
     24800 # barrier keyboard / mouse sharing
-   ];
+  ];
   networking.firewall.allowedUDPPorts = [
-  24800 # barrier keyboard / mouse sharing
+    24800 # barrier keyboard / mouse sharing
 
   ];
-    # Enable NAT
-    networking.firewall = {
-       # if packets are still dropped, they will show up in dmesg
-       logReversePathDrops = true;
-       # wireguard trips rpfilter up
-       extraCommands = ''
-         ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --sport 51820 -j RETURN
-         ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --dport 51820 -j RETURN
-       '';
-       extraStopCommands = ''
-         ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --sport 51820 -j RETURN || true
-         ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --dport 51820 -j RETURN || true
-       '';
-      };
+  # Enable NAT
+  networking.firewall = {
+    # if packets are still dropped, they will show up in dmesg
+    logReversePathDrops = true;
+    # wireguard trips rpfilter up
+    extraCommands = ''
+      ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --sport 51820 -j RETURN
+      ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --dport 51820 -j RETURN
+    '';
+    extraStopCommands = ''
+      ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --sport 51820 -j RETURN || true
+      ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --dport 51820 -j RETURN || true
+    '';
+  };
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
@@ -222,5 +223,5 @@ pkgs.tor-browser-bundle-bin
   virtualisation.libvirtd.enable = true;
   programs.dconf.enable = true;
 
-services.tailscale.enable = true;
+  services.tailscale.enable = true;
 }
