@@ -1,9 +1,14 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{ pkgs, ... }:
 
 {
+  environment.systemPackages = with pkgs; [
+    virt-manager
+    spice # copy-paste for vms
+  ];
 
-  # todo:
-  #  protonvpn cli wrapped?
-  #  intellij? as a app?
-  #  ...?
+  # enable docker
+  virtualisation.docker.enable = true;
+
+  # kvm/libvirt etc
+  virtualisation.libvirtd.enable = true;
 }

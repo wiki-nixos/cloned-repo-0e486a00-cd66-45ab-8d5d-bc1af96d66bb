@@ -3,34 +3,42 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-joplin.url = "github:nixos/nixpkgs/517501bcf14ae6ec47efd6a17dda0ca8e6d866f9"; # 2.12.16
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nur.url = "github:nix-community/NUR";
   };
 
-  inputs.nur.url = github:nix-community/NUR;
-
-  outputs = { nixpkgs, home-manager, nur, ... }:
-  let
-    system = "x86_64-linux";
-  in
-  {
+  outputs = { nixpkgs, home-manager, nur, ... }@ inputs: {
     nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
-        inherit system;
+      nixos = nixpkgs.lib.nixosSystem rec {
+        system = "x86_64-linux";
+
         modules = [
-          nur.nixosModules.nur
-          ./nixos/configuration.nix 
+          ./nixos
+
           home-manager.nixosModules.home-manager
-          ({config, ...}: {
+          nur.nixosModules.nur
+
+          ({ config, ... }: {
             home-manager = {
               useUserPackages = true;
               useGlobalPkgs = true;
-              users.user = ./home-manager/home.nix;
+              users.user = ./home-manager;
               extraSpecialArgs.nur = config.nur;
             };
           })
+
+          {
+            nixpkgs.overlays = [
+              (final: prev: {
+                inherit (inputs.nixpkgs-joplin.legacyPackages.${system}) joplin-desktop;
+              })
+            ];
+          }
         ];
       };
     };
