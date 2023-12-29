@@ -2,6 +2,7 @@
 
 let
   jetbrains-override-neo2 = pkgs.callPackage ../pkgs/jetbrains-override-neo2.nix { };
+  jetbrains-client = pkgs.callPackage ../pkgs/jetbrains-client { };
 in
 {
   home.packages = with pkgs; [
@@ -24,6 +25,7 @@ in
     #jetbrains.idea-ultimate
     jetbrains-override-neo2.idea-ultimate
     jetbrains-override-neo2.clion
+    jetbrains-client
 
     nur.repos.mic92.hello-nur
 
