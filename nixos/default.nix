@@ -11,6 +11,7 @@
     ./networking.nix
     ./users.nix
     ./xfce.nix
+    ./zsh.nix
   ];
 
   nix.settings.experimental-features = [ "nix-command flakes" ];

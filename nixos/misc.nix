@@ -28,32 +28,11 @@
     cargo
     gcc
     gnumake
-    zsh
     python3
     poetry
 
     openssl
   ];
-
-# todo as zsh.nix
-  programs.zsh = {
-    enable = true;
-    shellAliases = {
-      ll = "ls -al";
-    };
-    ohMyZsh = {
-        enable = true;
-        plugins = [ "git"];
-        theme = "robbyrussell";
-      };
-
-      promptInit=''
-      source /home/user/.remote-project-management-cli/zsh-completion.sh
-      function my-remote-projects() {
-          source /home/user/.remote-project-management-cli/bin/remote-project-management-cli-wrapper "$@"
-      }
-      '';
-  };
 
   programs.dconf.enable = true;
 }
