@@ -27,7 +27,7 @@
     rustup
     cargo
     gcc
-
+    gnumake
     python3
     poetry
 
