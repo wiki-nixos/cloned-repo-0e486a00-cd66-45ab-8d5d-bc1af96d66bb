@@ -32,6 +32,19 @@
     poetry
 
     openssl
+
+    tigervnc
+    distrobox
+
+    quickemu
+    quickgui
+
+    freetube
+    nuclear
+    librewolf
+
+    whatsapp-for-linux
+    telegram-desktop
   ];
 
   programs.dconf.enable = true;

@@ -20,7 +20,9 @@
   # Configure keymap in X11
   services.xserver = {
     layout = "de";
+    # trace: warning: The option `services.xserver.xkbVariant' defined in `/nix/store/syfpbvi3r122cb2qj6h9k4zgs45axadm-source/nixos/locale.nix' has been renamed to `services.xserver.xkb.variant'.
     xkbVariant = "neo";
+# trace: warning: The option `services.xserver.xkbVariant' defined in `/nix/store/syfpbvi3r122cb2qj6h9k4zgs45axadm-source/nixos/locale.nix' has been renamed to `services.xserver.xkb.variant'.
   };
 
   # Configure console keymap
