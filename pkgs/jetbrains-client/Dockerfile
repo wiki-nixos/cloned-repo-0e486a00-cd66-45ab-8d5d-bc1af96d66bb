@@ -1,7 +1,6 @@
 # fix a specific version for reproducability
 FROM debian:bookworm-20230919
 
-
 RUN apt-get update && apt-get install -y \
     sudo curl wget bash vim htop tree fontconfig libfreetype6 \
     libxext6 libxrender1 libxtst6 libfreetype6 libxi6
@@ -33,8 +32,8 @@ RUN rm -rf jetbrains-clients-downloader-linux-x86_64-1867* backends
 ################################ Apply the neo2-awk-hack ##################################
 ############################################################################################
 
-COPY ./apply_neo2_awk_hack.sh /app/apply_neo2_awk_hack.sh
-RUN /app/apply_neo2_awk_hack.sh
-RUN rm apply_neo2_awk_hack.sh
+# COPY ./apply_neo2_awk_hack.sh /app/apply_neo2_awk_hack.sh
+# RUN /app/apply_neo2_awk_hack.sh
+# RUN rm /app/apply_neo2_awk_hack.sh
 
 ENTRYPOINT ["/app/idea-IU-233.13135.103/bin/jetbrains_client.sh"]

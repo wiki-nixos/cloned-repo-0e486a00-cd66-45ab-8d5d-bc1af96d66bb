@@ -1,4 +1,4 @@
-{ fetchurl, jetbrains }:
+{ fetchurl, jetbrains, lib }:
 
 let
   neo2AwtHackJar = fetchurl {
@@ -32,5 +32,14 @@ in
 
 {
   idea-ultimate = jetbrains.idea-ultimate.overrideAttrs (overrideFn "idea-ultimate" "idea");
-  clion = jetbrains.clion.overrideAttrs (overrideFn "clion" "clion");
+  # clion = jetbrains.clion.overrideAttrs (overrideFn "clion" "clion");
+
+
+  clion = let
+      clionWithNeo2AwtHack = jetbrains.clion.overrideAttrs (overrideFn "clion" "clion");
+    in lib.overrideDerivation clionWithNeo2AwtHack (oldAttrs: {
+      buildInputs = oldAttrs.buildInputs or [ ] ++ [ (jetbrains.plugins.addPlugins jetbrains.clion [
+      # "github-copilot"
+      ]) ];
+    });
 }

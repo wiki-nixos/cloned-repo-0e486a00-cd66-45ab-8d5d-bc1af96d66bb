@@ -2,12 +2,12 @@
 
 
 IDEA_PATH="/app/idea-IU-233.13135.103"
-EXECUTABLES=("jetbrains_client" "idea")
+EXECUTABLES=("jetbrains_client")  # "idea")
 
 
 mkdir /home/user/.ideaNeo
 wget -O /home/user/.ideaNeo/neo2-awt-hack-0.5.jar "https://github.com/chenkelmann/neo2-awt-hack/blob/master/releases/neo2-awt-hack-0.5-java8oracle.jar?raw=true"
-echo "sha256-/2OGd2Nl7tRqkB73LJjLXMlRwFHwOdX9cnXRk5BP3S8=  neo2-awt-hack-0.5.jar" | sha256sum -c
+# echo "sha256 -/2OGd2Nl7tRqkB73LJjLXMlRwFHwOdX9cnXRk5BP3S8=  neo2-awt-hack-0.5.jar" | sha256sum -c
 
 
 for EXECUTABLE in "${EXECUTABLES[@]}"; do
@@ -24,5 +24,5 @@ for EXECUTABLE in "${EXECUTABLES[@]}"; do
     cat temp_last_lines.txt >> "$IDEA_PATH/bin/$EXECUTABLE.sh"
 
     # cleanup
-    rm temp_last_lines.txt
+    # rm temp_last_lines.txt
 done
