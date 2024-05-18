@@ -3,7 +3,7 @@
     enable = true;
 
     bars.top = {
-        theme = "solarized-light";
+        theme = "solarized-dark";
         # icons = "awesome6";
         blocks = [
           {
