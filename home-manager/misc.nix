@@ -41,8 +41,6 @@ in
 
     speedtest-cli
 
-    monero-gui
-
     kate
   ];
 }

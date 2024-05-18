@@ -10,7 +10,9 @@ in
     extraConfig = ''
       font pango:monospace 14
       workspace_layout tabbed
-      client.focused #4c7899 #2a3843 #ffffff #2e9ef4 #285577
+      # client.focused #4c7899 #2a3843 #ffffff #2e9ef4 #285577 old (maybe restore)
+      client.focused #8cb2d9 #6a7883 #ffffff #6ec1f6 #6897b7
+      client.unfocused #737373 #626262 #cccccc #646464 #737373
     '';
 
     config = {
