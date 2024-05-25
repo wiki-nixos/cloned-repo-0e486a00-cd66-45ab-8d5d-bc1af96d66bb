@@ -14,6 +14,13 @@
       };
 
  hardware.enableRedistributableFirmware = true;
+  hardware = {
+     raspberry-pi."4".apply-overlays-dtmerge.enable = true;
+     deviceTree = {
+       enable = true;
+       filter = "*rpi-4-*.dtb";
+     };
+   };
 
   environment.systemPackages = with pkgs; [
         htop
@@ -21,6 +28,10 @@
         wget
         tree
         git
+
+        # for updating kernel and so on (https://wiki.nixos.org/wiki/NixOS_on_ARM/Raspberry_Pi_4#USB_boot)
+         libraspberrypi
+          raspberrypi-eeprom
     ];
 }
 
