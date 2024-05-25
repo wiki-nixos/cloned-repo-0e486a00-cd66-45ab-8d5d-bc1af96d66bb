@@ -1,9 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  security.sudo.extraConfig = ''
-    Defaults        timestamp_timeout=30
-  '';
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users = {

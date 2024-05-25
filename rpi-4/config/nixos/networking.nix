@@ -1,8 +1,20 @@
+{ lib, ... }:
+
 {
 
 
   networking = {
-  hostName = "rpi-silver-nixos"; # Define your hostname.
+  hostName = "rpi-silver-nixos";
+
+      firewall = {
+        allowedTCPPorts = [
+          4713 # pulseaudio server
+        ];
+        allowedUDPPorts = [
+          4713 # pulseaudio server
+        ];
+    };
+
   };
 
 
