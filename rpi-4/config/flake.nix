@@ -15,13 +15,23 @@
   outputs = { self, nixpkgs }: {
     # nixosConfigurations is the key that nixos-rebuild looks for.
     nixosConfigurations = {
-      rpi-silver-nixos = nixpkgs.lib.nixosSystem {
+      rpi-silver-nixos-sd-boot = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
         # Import our old system configuration.nix
-        modules = [
-          ./nixos
-        ];
+              modules = [
+                ./nixos
+                ./hardware-configuration/sd-boot.nix
+              ];
       };
+
+            rpi-silver-nixos-usb-boot = nixpkgs.lib.nixosSystem {
+              system = "aarch64-linux";
+              # Import our old system configuration.nix
+              modules = [
+                ./nixos
+                ./hardware-configuration/usb-boot.nix
+              ];
+            };
     };
   };
 }
