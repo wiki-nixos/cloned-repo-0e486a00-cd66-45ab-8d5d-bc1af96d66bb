@@ -3,6 +3,7 @@
 
 
 RPI_IP_ADDRESS=...
+BOOT_type=(in usb, sd)
 
 
 ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no nixos@192.168.1.162
