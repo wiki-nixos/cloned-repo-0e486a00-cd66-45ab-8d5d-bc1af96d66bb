@@ -11,56 +11,78 @@ try out performance of this option:
 
 # also try out:  hardware.raspberry-pi."4".fkms-3d.enable = true;??
 
-
-
 hardware.raspberry-pi."4".fkms-3d.enable = true;
 
-sound.enable = true;
-hardware.pulseaudio.enable = true;
-hardware.raspberry-pi."4".audio.enable = true;
+pactl unload-module module-native-protocol-tcp
 
 
-      # Bootloader.
-        boot = {
-          kernelPackages = pkgs.linuxKernel.packages.linux_rpi4;
-          initrd.availableKernelModules = [ "xhci_pci" "usbhid" "usb_storage" ];
-          loader = {
-            grub.enable = false;
-            generic-extlinux-compatible.enable = true;
-          };
-        };
-
-
-
-
-
-
-boot = {
-    loader.raspberryPi.firmwareConfig = ''
-    dtparam=audio=on
-    '';
-    extraModprobeConfig = ''
-    options snd_bcm2835 enable_headphones=1
-    '';
+systemd.services.pulseaudio-tcp = {
+description = "PulseAudio TCP Module Loader";
+after = [ "network.target" "pulseaudio.service" ];
+requires = [ "pulseaudio.service" ];
+wantedBy = [ "multi-user.target" ];
+serviceConfig = {
+ExecStart = "${pkgs.pulseaudio}/bin/pactl load-module module-native-protocol-tcp port=4713 listen=0.0.0.0 auth-anonymous=true";
+Type = "oneshot";
+RemainAfterExit = true;
+};
 };
 
 
+[user@rpi-silver-nixos:/
 
 
-hardware.raspberry-pi."4" = {
-fkms-3d.enable = true;
-audio.enable = true;
-dwc2.enable = true;
+
+journalctl -u pulseaudio-tcp
+sudo systemctl show pulseaudio-tcp
+sudo systemctl --user  status pulseaudio-tcp
+
+journalctl -u pulseaudio-tcp
+sudo systemctl show pulseaudio-tcp
+sudo systemctl status pulseaudio-tcp-monitor
+journalctl -u pulseaudio-tcp-monitor
+
+
+
+pactl list modules | grep module-native-protocol-tcp > /dev/null || pactl unload-module module-native-protocol-tcp
+
+sudo systemctl restart pulseaudio-tcp
+
+let
+script = pkgs.writeShellScriptBin "pulseaudio-tcp-monitor" ''
+if pactl list modules | grep -q 'module-native-protocol-tcp'; then
+echo "Module already active. Unloading..."
+pactl unload-module module-native-protocol-tcp || true
+echo "Module unloaded successfully."
+fi
+    echo "Starting new client:"
+    pactl load-module module-native-protocol-tcp port=4713 listen=0.0.0.0 auth-anonymous=true
+'';
+in$ which pactl
+/run/current-system/sw/bin/pactl
+
+
+
+
+systemd.user.services.pulseaudio-tcp = {
+description = "PulseAudio TCP Module";
+after = [ "network.target" ];
+#wantedBy = [ "multi-user.target" ];
+serviceConfig = {
+Type = "simple";
+ExecStartPre = "/run/current-system/sw/bin/sleep 10";
+ExecStart = "/home/user/config/pulseaudio-tcp.sh";
+Restart = "no";
+};
 };
 
-sound.enable = true;
+
+pactl load-module module-zeroconf-publish
+
+module-zeroconf-discover
+module-zeroconf-publish 
+
+load-module unmodule-native-protocol-tcp
 
 
-hardware.pulseaudio = {
-enable = true;
-package = pkgs.pulseaudioFull;
-};
-
-
-
-pactl load-module module-native-protocol-tcp port=4713 listen=0.0.0.0 auth-anonymous=true
+pactl list modules | grep module-native-protocol-tcp

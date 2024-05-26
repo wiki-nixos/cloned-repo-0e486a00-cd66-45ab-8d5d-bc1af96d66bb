@@ -24,7 +24,11 @@
           boot.kernelParams = [ ];
 
           hardware.enableRedistributableFirmware = true;
-          hardware.pulseaudio.enable = true;
+          hardware.pulseaudio = {
+              extraConfig = "load-module module-native-protocol-tcp port=4713 listen=0.0.0.0 auth-anonymous=true";
+              enable = true;
+          };
+
 
 
   environment.systemPackages = with pkgs; [
