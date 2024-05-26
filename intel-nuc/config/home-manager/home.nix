@@ -1,7 +1,6 @@
 { config, pkgs, nur, ... }:
 
 let
-  ideaUltimateModified = import ./apps/jetbrains-idea-ultimate-override-neo2.nix { inherit pkgs; };
   mod = "Mod4";
 
 in 
@@ -123,7 +122,6 @@ programs.i3status-rust = {
 
   imports = [
      ./apps/neovim.nix
-     ./modules/protonmail-bridge.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
 
@@ -156,9 +154,6 @@ programs.i3status-rust = {
     pkgs.protonmail-bridge
     pkgs.thunderbird
 
-
-    #pkgs.jetbrains.idea-ultimate
-    ideaUltimateModified
     nur.repos.mic92.hello-nur  
 
 
