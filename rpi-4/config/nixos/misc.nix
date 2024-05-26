@@ -6,21 +6,21 @@
 
 {
       # Bootloader.
+
+  boot = {
+    loader.raspberryPi.firmwareConfig = ''
+      dtparam=audio=on
+    '';
+    extraModprobeConfig = ''
+      options snd_bcm2835 enable_headphones=1
+    '';
+  };
       boot.loader = {
-          # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)
           grub.enable = false;
-         # Enables the generation of /boot/extlinux/extlinux.conf
          generic-extlinux-compatible.enable = true;
       };
 
  hardware.enableRedistributableFirmware = true;
-  hardware = {
-     raspberry-pi."4".apply-overlays-dtmerge.enable = true;
-     deviceTree = {
-       enable = true;
-       filter = "*rpi-4-*.dtb";
-     };
-   };
 
   environment.systemPackages = with pkgs; [
         htop

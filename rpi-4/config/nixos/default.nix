@@ -3,7 +3,7 @@
     ./misc.nix
     ./users.nix
     ./networking.nix
-    ./video.nix
+    #./video.nix
   ];
 
     nix.settings.experimental-features = [ "nix-command flakes" ];
