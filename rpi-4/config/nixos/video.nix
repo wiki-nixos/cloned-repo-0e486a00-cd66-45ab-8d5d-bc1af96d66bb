@@ -22,4 +22,5 @@ services.displayManager.defaultSession = "xfce";
        videoDrivers = [ "fbdev" ];
      };
 
+services.autorandr.enable = true;
 }
