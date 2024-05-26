@@ -6,32 +6,29 @@ let
   mod = "Mod4";
 in
 {
-
-services.displayManager = {
-              autoLogin = {
+    services = {
+        displayManager = {
+            autoLogin = {
                 enable = true;
                 user = "user";
-              };
-              defaultSession = "xfce+i3";
-
-};
-
-    services.xserver = {
-        enable = true;
-        desktopManager = {
-              xterm.enable = false;
-              xfce = {
-                enable = true;
-                noDesktop = true;
-                enableXfwm = false;
-              };
-          };
-
-        displayManager.lightdm.enable = true;
-        windowManager.i3 = {
-              enable = true;
+            };
+            defaultSession = "xfce+i3";
         };
-    };
 
-    services.autorandr.enable = true;
+        xserver = {
+            enable = true;
+            desktopManager = {
+                xterm.enable = false;
+                xfce = {
+                    enable = true;
+                    noDesktop = true;
+                    enableXfwm = false;
+                };
+            };
+            displayManager.lightdm.enable = true;
+            windowManager.i3.enable = true;
+        };
+
+        autorandr.enable = true;
+    };
 }

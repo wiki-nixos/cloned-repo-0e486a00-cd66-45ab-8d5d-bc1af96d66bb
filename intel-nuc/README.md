@@ -6,23 +6,12 @@ todo revoke auto sudo after development
 
 
 
-todo debug autosstart with fcast-receeiver
+todo debug autosstart with fcast-receeiver -> fuck it
 todo refactor barrier autostart into nix config
 todo reset git 
 todo clean home dir auf intel nuc
 
 
-debug fcast:
-
-home manger or sys 
-1. both
-
-
-
 
 remove nur
 in general clean dependencies
-
-restructure xfce.nix
-
-somehow fcast-receiver is starting now. -> good time to clean git
