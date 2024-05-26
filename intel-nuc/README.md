@@ -17,4 +17,12 @@ debug fcast:
 home manger or sys 
 1. both
 
- 
+
+
+
+remove nur
+in general clean dependencies
+
+restructure xfce.nix
+
+somehow fcast-receiver is starting now. -> good time to clean git
