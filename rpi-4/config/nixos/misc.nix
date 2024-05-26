@@ -32,6 +32,10 @@
         # for updating kernel and so on (https://wiki.nixos.org/wiki/NixOS_on_ARM/Raspberry_Pi_4#USB_boot)
          libraspberrypi
           raspberrypi-eeprom
+
+        # audio
+        pavucontrol
+        pulseaudioFull
     ];
 }
 
