@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 let
   mod = "Mod4";
@@ -28,7 +28,7 @@ programs.i3status-rust = {
     xsession.windowManager.i3 = {
         enable = true;
         config = {
-startup = import ./autostart.nix pkgs;
+startup = import ./autostart.nix;
 
 
  bars = [
