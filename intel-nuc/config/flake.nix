@@ -21,7 +21,7 @@
         inherit system;
         modules = [
           nur.nixosModules.nur
-          ./nixos/configuration.nix 
+          ./nixos
           home-manager.nixosModules.home-manager
           ({config, ...}: {
             home-manager = {

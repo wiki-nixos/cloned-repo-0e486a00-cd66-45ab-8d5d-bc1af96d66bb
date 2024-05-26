@@ -120,10 +120,6 @@ programs.i3status-rust = {
         };
      };
 
-  imports = [
-     ./apps/neovim.nix
-  ];
-
   home.username = "user";
   home.homeDirectory = "/home/user";
 
