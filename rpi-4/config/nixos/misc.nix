@@ -24,6 +24,7 @@
           boot.kernelParams = [ ];
 
           hardware.enableRedistributableFirmware = true;
+          hardware.pulseaudio.enable = true;
 
 
   environment.systemPackages = with pkgs; [
