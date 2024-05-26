@@ -28,7 +28,7 @@ programs.i3status-rust = {
     xsession.windowManager.i3 = {
         enable = true;
         config = {
-startup = import ./autostart.nix;
+startup = import ./autostart.nix pkgs;
 
 
  bars = [
@@ -126,28 +126,10 @@ startup = import ./autostart.nix;
   home.stateVersion = "23.05";
 
   home.packages = [
-    pkgs.htop
-    pkgs.vim
-    pkgs.wget
-    pkgs.tree
-    pkgs.git
-
     pkgs.barrier # keyboard and mouse sharing
-
-    pkgs.fcast-receiver
+    # must be defined here, because it is included in autostart.
+    pkgs.fcast-receiver # ports 46899 (tcp) , 46898 (udp)
   ];
-
-
-  home.file = {
-
-  };
-
-  home.sessionVariables = {
-    # EDITOR = "emacs";
-    TERMINAL = "konsole";
-  };
-
-
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

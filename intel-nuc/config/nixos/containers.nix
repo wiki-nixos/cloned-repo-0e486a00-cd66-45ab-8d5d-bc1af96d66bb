@@ -11,4 +11,5 @@
 
   # kvm/libvirt etc
   virtualisation.libvirtd.enable = true;
+  programs.dconf.enable = true;
 }

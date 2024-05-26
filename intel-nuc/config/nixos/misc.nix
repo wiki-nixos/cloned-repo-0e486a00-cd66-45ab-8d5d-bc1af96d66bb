@@ -21,7 +21,13 @@
 
 
 environment.systemPackages = with pkgs; [
-    # fcast-receiver # ports 46899 (tcp) , 46898 (udp)
     firefox
+    fcast-receiver # ports 46899 (tcp) , 46898 (udp)
+     htop
+     vim
+     wget
+     tree
+     git
+
 ];
 }

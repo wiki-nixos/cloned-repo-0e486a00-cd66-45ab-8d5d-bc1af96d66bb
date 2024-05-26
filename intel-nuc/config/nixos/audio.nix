@@ -20,6 +20,7 @@
     # pulseaudio volume control
     pkgs.pavucontrol
     pkgs.neofetch
+    pulseaudioFull
   ];
 
 
