@@ -27,7 +27,7 @@
             home-manager = {
               useUserPackages = true;
               useGlobalPkgs = true;
-              users.user = ./home-manager/home.nix;
+              users.user = ./home-manager;
               extraSpecialArgs.nur = config.nur;
             };
           })

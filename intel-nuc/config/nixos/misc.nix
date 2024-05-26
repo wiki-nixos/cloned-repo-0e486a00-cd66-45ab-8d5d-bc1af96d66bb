@@ -18,4 +18,10 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
+
+
+environment.systemPackages = with pkgs; [
+    fcast-receiver # ports 46899 (tcp) , 46898 (udp)
+    firefox
+];
 }

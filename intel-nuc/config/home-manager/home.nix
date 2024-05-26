@@ -30,6 +30,13 @@ programs.i3status-rust = {
         enable = true;
         config = {
 
+        # Startkommandos für Anwendungen beim i3-Start
+        startup = [
+          {
+            command = "${pkgs.firefox}/bin/firefox"; # Firefox starten
+            notification = true; # Startup-Notification aktivieren
+          }
+        ];
 
  bars = [
         {

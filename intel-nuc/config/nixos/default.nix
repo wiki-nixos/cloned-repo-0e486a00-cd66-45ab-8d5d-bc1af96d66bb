@@ -14,6 +14,7 @@ nix.settings.experimental-features = [ "nix-command flakes" ];
   ./users.nix
   ./networking.nix
   ./audio.nix
+  ./containers.nix
   ];
 
 
