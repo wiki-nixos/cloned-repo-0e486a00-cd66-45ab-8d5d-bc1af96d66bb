@@ -3,7 +3,7 @@
 
 {
   imports = [
-  ./autostart.nix
+  #./autostart.nix
   ./home.nix
   ];
 

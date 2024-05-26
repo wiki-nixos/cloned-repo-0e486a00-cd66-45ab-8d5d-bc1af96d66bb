@@ -2,7 +2,6 @@
 
 let
   mod = "Mod4";
-
 in 
 {
 programs.i3status-rust = {
@@ -29,14 +28,8 @@ programs.i3status-rust = {
     xsession.windowManager.i3 = {
         enable = true;
         config = {
+startup = import ./autostart.nix pkgs;
 
-        # Startkommandos für Anwendungen beim i3-Start
-        startup = [
-          {
-            command = "${pkgs.firefox}/bin/firefox"; # Firefox starten
-            notification = true; # Startup-Notification aktivieren
-          }
-        ];
 
  bars = [
         {
