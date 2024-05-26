@@ -28,7 +28,7 @@ programs.i3status-rust = {
     xsession.windowManager.i3 = {
         enable = true;
         config = {
-startup = import ./autostart.nix pkgs;
+startup = import ./autostart.nix;
 
 
  bars = [
@@ -132,36 +132,16 @@ startup = import ./autostart.nix pkgs;
     pkgs.tree
     pkgs.git
 
-
     pkgs.barrier # keyboard and mouse sharing
 
+    pkgs.fcast-receiver
   ];
 
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
-  home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
 
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
+  home.file = {
+
   };
 
-  # You can also manage environment variables but you will have to manually
-  # source
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/user/etc/profile.d/hm-session-vars.sh
-  #
-  # if you don't want to manage your shell through Home Manager.
   home.sessionVariables = {
     # EDITOR = "emacs";
     TERMINAL = "konsole";

@@ -1,9 +1,6 @@
-{ pkgs, ... }:
-
-
 [
-  {
-    command = "${pkgs.firefox}/bin/firefox";
-    notification = true;
-  }
+    {
+      command = "fcast-receiver";
+      notification = true;
+    }
 ]
