@@ -1,4 +1,25 @@
+{ config, lib, pkgs, ... }:
+
 {
-  #hardware.raspberry-pi."4".fkms-3d.enable = true;
+
+services.displayManager.defaultSession = "xfce";
+
+   services.xserver = {
+       enable = true;
+
+       displayManager.lightdm.enable = true;
+
+       #desktopManager.gnome.enable = true;
+          desktopManager = {
+             xterm.enable = false;
+             xfce = {
+               enable = true;
+               noDesktop = true;
+               enableXfwm = false;
+             };
+           };
+
+       videoDrivers = [ "fbdev" ];
+     };
 
 }
