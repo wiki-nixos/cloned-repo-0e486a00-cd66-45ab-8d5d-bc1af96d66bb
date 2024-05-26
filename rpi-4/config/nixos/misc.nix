@@ -23,12 +23,17 @@
           boot.extraModulePackages = [ ];
           boot.kernelParams = [ ];
 
-          hardware.enableRedistributableFirmware = true;
-          hardware.pulseaudio = {
+
+        hardware = {
+            bluetooth.enable = true;
+            #deviceTree.filter = "bcm2711-rpi-*.dtb"; ??
+
+            enableRedistributableFirmware = true;
+            pulseaudio = {
               extraConfig = "load-module module-native-protocol-tcp port=4713 listen=0.0.0.0 auth-anonymous=true";
               enable = true;
-          };
-
+             };
+        };
 
 
   environment.systemPackages = with pkgs; [
