@@ -5,14 +5,6 @@ todo revoke auto sudo after development
 
 
 
-networking.firewall = { # barrier keyboard/mouse sharing
-enable = true;
-allowedTCPPorts = [ 24800 ];
-allowedUDPPorts = [ 24800 ];
-};
-
-
-
 # Configure keymap in X11
 services.xserver = {
 layout = "de";
