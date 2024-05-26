@@ -1,8 +1,4 @@
 [
- {
-      command = "firefox";
-      notification = true;
-    }
     {
       command = "fcast-receiver";
     }
