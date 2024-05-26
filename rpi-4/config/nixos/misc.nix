@@ -6,21 +6,25 @@
 
 {
       # Bootloader.
+      boot = {
 
-  boot = {
-    loader.raspberryPi.firmwareConfig = ''
-      dtparam=audio=on
-    '';
-    extraModprobeConfig = ''
-      options snd_bcm2835 enable_headphones=1
-    '';
-  };
-      boot.loader = {
-          grub.enable = false;
-         generic-extlinux-compatible.enable = true;
+           initrd.availableKernelModules = [
+              "usbhid"
+              "usb_storage"
+              "vc4"
+              "pcie_brcmstb" # required for the pcie bus to work
+              "reset-raspberrypi" # required for vl805 firmware to load
+            ];
+          loader = {
+              grub.enable = false;
+             generic-extlinux-compatible.enable = true;
+          };
       };
+          boot.extraModulePackages = [ ];
+          boot.kernelParams = [ ];
 
- hardware.enableRedistributableFirmware = true;
+          hardware.enableRedistributableFirmware = true;
+
 
   environment.systemPackages = with pkgs; [
         htop
