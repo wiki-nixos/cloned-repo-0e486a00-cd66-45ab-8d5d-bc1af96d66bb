@@ -8,7 +8,7 @@
   };
 
   # Outputs can be anything, but the wiki + some commands define their own
-  # specific keys. Wiki page: https://nixos.wiki/wiki/Flakes#Output_schema
+  # specific keys. Wiki page: https://wiki.nixos.org/wiki/Flakes#Output_schema
   outputs = { self, nixpkgs, nixos-hardware }: {
     # nixosConfigurations is the key that nixos-rebuild looks for.
     nixosConfigurations = {

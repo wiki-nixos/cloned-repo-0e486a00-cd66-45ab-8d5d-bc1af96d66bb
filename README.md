@@ -37,7 +37,7 @@ In no particular order:
         * [`malo-git-aliases`](./home/git-aliases.nix)
         * [`malo-gh-aliases`](./home/gh-aliases.nix)
         * [`malo-startship-symbols`](./home/starship-symbols.nix) that provides predefined configuration of symbols for [Starship](https://starship.rs) prompt using NerdFont symbols.
-    * Support for non-flake compatible versions of Nix and legacy workflows through [`flake-compat`](https://nixos.wiki/wiki/Flakes#Using_flakes_project_from_a_legacy_Nix):
+    * Support for non-flake compatible versions of Nix and legacy workflows through [`flake-compat`](https://wiki.nixos.org/wiki/Flakes#Using_flakes_project_from_a_legacy_Nix):
         * [`default.nix`](./default.nix), allows traditional Nix commands like `nix-build` to operate on the flake inputs/outputs.
 * Support for Macs with Apple Silicon including ability to easily overlay in x86 version of packages, when they don't build on ARM. Search `pkgs-x86` in [`flake.nix`](./flake.nix) and see `nix.settings.extra-platforms` in [`darwin/bootstrap.nix`](./darwin/bootstrap.nix) for details.
 * A GitHub [workflow](./.github/workflows/ci.yml) that builds the my macOS system `nix-darwin` config and `home-manager` Linux user config, and updates a Cachix cache. Also, once a week it updates all the flake inputs before building, and if the build succeeds, it commits the updated `flake.lock` file.
@@ -58,5 +58,5 @@ In no particular order:
 
 https://github.com/srid/nix-config/blob/705a70c094da53aa50cf560179b973529617eb31/nix/home/i3.nix
 
-https://nixos.wiki/wiki/i3
+https://wiki.nixos.org/wiki/i3
 https://nix-community.github.io/home-manager/options.html#opt-programs.i3status-rust.enable
